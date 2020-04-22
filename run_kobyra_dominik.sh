@@ -24,9 +24,16 @@ function check_if_repo_cloned()
 }
 
 
-if [ $1 == "clone" ]; then
+if [ "$#" -ne 1 ]; then
+    
+    echo -e "\nProsze podac jeden argument do skryptu.\n"
+    exit 1
+
+elif [ $1 == "clone" ]; then
 
     git clone https://github.com/d0mk/pn-bootloader
+    rm pn-bootloader/README.md
+    rm pn-bootloader/run_kobyra_dominik.sh
     exit 0
 
 elif [ $1 == "run" ]; then
